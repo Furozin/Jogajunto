@@ -1,0 +1,141 @@
+Teste Jogajunto
+
+### 1. Qual a diferença entre `echo` e `print`?
+
+Existem algumas diferenças, algumas delas são:
+Echo não é uma função enquanto o print_r é considerado uma função regular;
+O Print_r pode ser usado em expressões enquanto o Echo não, print_r se assemelha bastante com var_dump;
+O print_r tambem retornará informações detalhadas sobre o paramêtro em um formato que possa ser facilmente entendido.
+
+### 2. Qual é a saída do código abaixo? Por quê?
+
+```php
+$x = true and false;
+var_dump($x);
+```
+
+bool(true), porque como temos o true em primeiro ele entende como se fosse valor 1 tendo o retorno de true, caso fosse o contrário o retorno seria false
+
+### 3. Qual é a saída do código abaixo? Por quê?
+
+```php
+$x = 5;
+$a = array(
+    $x++ + $x++,
+    $x,
+    $x-- - $x--,
+    $x,
+);
+
+var_dump($a);
+```
+
+> array(4) 
+{ 
+    [0]=> int(11) 
+    [1]=> int(7) 
+    [2]=> int(1) 
+    [3]=> int(5) 
+} 
+
+++ e – são operadores de incremento/decremento, sendo assim, quando se tem após a variável como no exemplo, ele acrescentará 1 para x após o retorno, sendo assim na próxima operação:
+$a = array(
+    $x++ + $x++, → nesta linha o primeiro x incrementa 1 para o próximo, 5+6,  o segundo x ele incrementa para a próxima operação mais um no x, se tornando 7, resultado da linha abaixo
+    $x,
+    $x-- - $x--,→ nesta linha o x estando como 7 subtrai 1 sendo então 7 – 6, resultando em 1, e o segundo x subtrai mais um do x que continha agora 6, se tornando o x abaixo que é 5.
+    $x,
+);
+
+### 4. Quais serão os valores de `$a` e `$b` após a execução do código abaixo? Por quê?
+
+```php
+$a = '1';
+$b = &$a;
+$b = "2$b";
+```
+
+>string(1) "1" string(2) "21", O & é um operador de referência, logo b será igual a variavel 1. 
+
+### 5. O que são Traits e para que servem? 
+
+> Trait é uma funcionalidade para reuso de código de forma que não tenhamos código duplicado, porem ao contrário da herança, ele não precisa ter um tipo compatível.
+
+### 6. Qual será a saída do código abaixo? Por quê?
+
+```php
+var_dump(0123 == 123);
+var_dump('0123' == 123);
+var_dump('0123' === 123);
+```
+False, True, False
+o primeiro é um comparador no qual 0123 não é igual a 123, porem, no segundo caso utilizando as aspas o 0123 de int se torna uma string 123 quando feito a comparação se torna igual, e no terceiro caso, é feito uma comparação de tipo, no caso string com int não são por isso o false
+
+> (Sua resposta aqui.)
+
+### 7. Qual será a saída do código abaixo? Por quê?
+
+```php
+$a = '';
+$b = 0;
+$c = '0a';
+
+var_dump($a == $b);
+var_dump($b == $c);
+var_dump($c == $a);
+```
+
+> True, True, False
+No primeiro caso temos o campo vazio, quando se faz essa comparação 0 e vazio são iguais,
+no segundo caso como o $b é inteiro, o php tenta converter o segundo campo para inteiro tendo como resultado um 0 que é a representação de int para string, sendo 0=0 ele retorna um true e no terceiro caso, ele compara uma string com vazio, sendo false
+
+### 8. Qual será o valor de `$x` após a execução do código abaixo? Por quê?
+
+```php
+$x = 3 + "15%";
+```
+
+Teriamos uma mensagem de warnig, pois o 15 não é um número inteiro para somar com o 3, o resultado ficaria 18.
+
+### 9. Qual a diferença entre `require_once()` e `include_once()`?
+
+> A diferença é no tratamento de erro, no require temos a parada do script quando se tem um erro, o include produz um erro e tambem que não poderá ser incluído novamente um arquivo caso o mesmo já tenha sido incluído
+
+### 10. Qual será o valor de `$name` após a execução do código abaixo? Por quê?
+
+```php
+$name = 'John ';
+$name[10] = 'Doe';
+```
+
+> O retorno será John D, porem não consegui compreender o motivo desse comportamento, mesmo realizando os testes
+
+### 11. Qual será a saída do código abaixo? Por quê?
+
+```php
+$x = PHP_INT_MAX;
+echo gettype($x + 1);
+echo (int)($x + 1);
+
+$y = 1.0;
+echo is_float($y);
+echo gettype($y);
+```
+
+> depende do sistema, sendo O maior inteiro suportado nesta compilação do PHP. Geralmente int(2147483647) em sistemas de 32 bit e int(9223372036854775807) em sistemas de 64 bits 
+
+double
+-9223372036854775808
+1
+double 
+
+### 12. Qual será o valor de `$x` após a execução do código abaixo? Por quê?
+
+```php
+$x = "one" + 1;
+```
+
+> aviso de warning, pois tentará somar int + int e não encontrará one como númerico, mas terá como resultado 1.
+
+### 13. Qual a diferença entre `isset()` e `empty()`?
+
+> A função isset gera aviso a empty não gera aviso caso a variável não exista, a função isset determina se a variavel foi declarada e se o seu valor não é igual a null enquanto o empty apenas verifica se a variavel não possui valor null. 
